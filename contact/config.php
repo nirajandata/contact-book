@@ -13,5 +13,6 @@ if (isset($_POST['save'])){
 	$address=$_POST['address'];
 	$email=$_POST['email'];
 	$connec->query("INSERT INTO ctable(name,email,address) VALUES('$name','$email','$address')") or die($connec->error);
-}
+	$result=$connec->query("SELECT * FROM ctable") or die($connec->error);
+	}
 ?>
