@@ -18,17 +18,27 @@ $results=$connec->query("$sql");
 $num=mysqli_num_rows($results)
 ?>
 <?php if($num > 0): ?>
-	<h1 class=" blockquote text-center"> <?php echo $num." results found"; ?></h1>
+	<h1 class="pt-4 blockquote text-center"> <?php echo $num." results found"; ?></h1>
 <div class="row justify-content-center">
 <form class="form-group ">
 
 <?php
 while($row=$results->fetch_assoc()): ?>
-	<tr>
-	<td><?php echo $row['name']."<br>"; ?></td>
-	<td><?php echo $row['address']."<br>"; ?></td>
-	<td><?php echo $row['email']."<br>"; ?></td>	
-	</tr>
+	<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title"><?php echo $row['name']."<br>"; ?></h5>
+    
+    <p class="card-text"><?php echo $row['address']."<br>"; ?>
+    <?php echo $row['email']."<br>"; ?>	
+    </p>
+  <a href="index.php?edit=<?php echo $row['id'] ?>"
+			class="btn btn-info">Edit
+		</a>
+		<a href="config.php?delete=<?php echo $row['id'] ?>"
+			class="btn btn-danger">Trash
+		</a>
+  </div>
+</div>
 <?php endwhile; ?>
 <?php endif ; ?>
 </form>
