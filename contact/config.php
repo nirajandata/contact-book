@@ -35,7 +35,7 @@ if (isset($_POST['save'])){
 	}
 	if (isset($_GET['edit'])) {
 	 $id=$_GET['edit'];
-	 
+	 $dat=$id;
 	 $update=true;
 	 $resl=$connec->query("SELECT * FROM ctable where id=$id ") or die($connec->error);
 	 if ($id!=null) {
@@ -46,13 +46,13 @@ if (isset($_POST['save'])){
 	 }
 	}
 	if (isset($_POST['update'])) {
-	 $ids=$_POST['id'];
+	 $ids=$dat;
 	 $name = $_POST['name'];
 	 $email=$_POST['email'];
 	 $address=$_POST['address'];
 	 $connec->query("UPDATE ctable SET name='$name', address='$address', email='$email'  WHERE id=$ids ");
 	 $_SESSION['message']="Record has been updated";
 	 $_SESSION['msg']="warning";
-	 //header('location: index.php');
+	 header('location: index.php');
 	}
 ?>

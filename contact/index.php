@@ -25,6 +25,12 @@ if (isset($_SESSION['message'])): ?>
 <div class="container">
 <h2 class=" blockquote text-center">A Address Book </h2>	 
 <footer class="blockquote-footer text-center">By Navaraj Dhakal</footer>
+  	&nbsp;	&nbsp;	&nbsp;
+  <form class="form-inline justify-content-center" method="get" action="search.php" >
+	    <input class="form-control mr-sm-2" type="search" placeholder="Search" name='q'>
+    <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+  </form>
+  	&nbsp;	&nbsp;	&nbsp;	&nbsp;
 <div class="row justify-content-center">
 	<input type="hidden" name="id" value="<?php echo $ids; ?> ">
 	<form action="" method="post">
@@ -49,6 +55,7 @@ if (isset($_SESSION['message'])): ?>
 		 </div>
 	</form>
 </div>
+<?php if(mysqli_num_rows($result) > 0): ?>
 <div class="row justify-content-center">
 <table class="table ">
 <thead >
@@ -75,7 +82,7 @@ while($row=$result->fetch_assoc()): ?>
 	</td>
 	</tr>
 <?php endwhile; ?>
-
+<?php endif ; ?>
 </table>
 </div>
 </div>
