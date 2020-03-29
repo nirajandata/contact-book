@@ -1,2 +1,2 @@
 # contact-book
-```-A simple contact book for school project !
+``` A simple contact book for school project ! ```
